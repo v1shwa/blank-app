@@ -23,7 +23,7 @@ interview_duration_minutes = st.number_input(
     "Duration (in minutes)",
     min_value=10,
     max_value=180,
-    value=45,
+    value=15,
     step=5,
     help="Typical interviews range from 30 to 90 minutes.",
 )
