@@ -9,18 +9,22 @@ st.title("🤖 AI Theme Generator")
 #     "Configure an interview session by providing the Job Description, duration, and required skills."
 # )
 
+# Auth token
+# st.markdown("##### 🔐 Authentication")
+auth_token = st.text_input("🔐 Enter your authentication token", type="password")
+
 # ── Section 1: Job Description ──────────────────────────────────────────────
-st.header("📋 Job Description")
+# st.markdown("##### 📋 Job Description")
 jd_text = st.text_area(
-    "Paste the full Job Description here",
+    "📋 Paste the full Job Description here",
     height=200,
     placeholder="e.g. We are looking for a Senior ML Engineer with experience in LLM fine-tuning, RAG pipelines...",
 )
 
 # ── Section 2: Interview Duration ───────────────────────────────────────────
-st.header("⏱️ Interview Duration")
+# st.markdown("##### ⏱️ Interview Duration")
 interview_duration_minutes = st.number_input(
-    "Duration (in minutes)",
+    "⏱️ Interview Duration (in minutes)",
     min_value=10,
     max_value=180,
     value=15,
@@ -29,7 +33,7 @@ interview_duration_minutes = st.number_input(
 )
 
 # ── Section 3: Skills ────────────────────────────────────────────────────────
-st.header("🛠️ Skills")
+st.markdown("##### 🛠️ Skills")
 st.markdown(
     "Provide skills as a **JSON array**. Each skill object must have `skill`, `type` (`mandatory` or `preferred`), and `context (optional)`."
 )
@@ -127,6 +131,7 @@ if submit:
                     "https://arya-ai.up.railway.app/api/v1/themes/generate",
                     json=payload,
                     timeout=30,
+                    headers={"X-API-KEY": auth_token} if auth_token else {},
                 )
                 response.raise_for_status()
                 result = response.json()
