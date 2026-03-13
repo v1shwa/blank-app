@@ -11,7 +11,7 @@ st.title("🤖 AI Theme Generator")
 
 # Auth token
 # st.markdown("##### 🔐 Authentication")
-auth_token = st.text_input("🔐 Enter your authentication token", type="password")
+auth_token = st.text_input("🔐 Enter your access token", type="password")
 
 # ── Section 1: Job Description ──────────────────────────────────────────────
 # st.markdown("##### 📋 Job Description")
